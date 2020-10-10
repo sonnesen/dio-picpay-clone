@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import br.com.dio.picpayclone.dto.TokenDTO;
+
 public abstract class ResourceBase<T> {
 
 	protected ResponseEntity<T> responderRecursoCriado(T recurso) {
@@ -44,6 +46,10 @@ public abstract class ResourceBase<T> {
 
 	public ResponseEntity<Page<T>> responderListaDeRecursosPaginada(Page<T> recursosPaginados) {
 		return ResponseEntity.status(HttpStatus.OK).body(recursosPaginados);
+	}
+
+	public ResponseEntity<TokenDTO> responderRequisicaoMalSucedida() {
+		return ResponseEntity.badRequest().build();
 	}
 
 }
